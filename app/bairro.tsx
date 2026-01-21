@@ -3,6 +3,7 @@ import { Pressable, ScrollView, StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useThemeColor } from '@/hooks/use-theme-color';
 
 const BAIRROS = [
   'Bela Vista IV',
@@ -82,13 +83,28 @@ const BAIRROS = [
 
 export default function BairroScreen() {
   const [selectedBairro, setSelectedBairro] = useState<string | null>(null);
+  const cardBackground = useThemeColor({ light: '#ffffff', dark: '#1f2224' }, 'background');
+  const cardBorder = useThemeColor({ light: '#e6e6e6', dark: '#2a2f32' }, 'background');
+  const itemBackground = useThemeColor({ light: '#ffffff', dark: '#1c1f21' }, 'background');
+  const itemBorder = useThemeColor({ light: '#e1e1e1', dark: '#2a2f32' }, 'background');
+  const itemSelectedBackground = useThemeColor(
+    { light: '#e8f6fb', dark: '#19323a' },
+    'background'
+  );
+  const tintColor = useThemeColor({}, 'tint');
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Selecao de bairro</ThemedText>
-      <ThemedText style={styles.subtitle}>
-        Escolha seu bairro para ver os dias de coleta.
-      </ThemedText>
+      <ThemedView
+        style={[
+          styles.headerCard,
+          { backgroundColor: cardBackground, borderColor: cardBorder },
+        ]}>
+        <ThemedText type="title">Seleção de bairro</ThemedText>
+        <ThemedText style={styles.subtitle}>
+          Escolha seu bairro para ver os dias de coleta.
+        </ThemedText>
+      </ThemedView>
 
       <ScrollView
         style={styles.list}
@@ -100,7 +116,16 @@ export default function BairroScreen() {
           return (
             <Pressable
               key={bairro}
-              style={[styles.item, isSelected && styles.itemSelected]}
+              style={({ pressed }) => [
+                styles.item,
+                { backgroundColor: itemBackground, borderColor: itemBorder },
+                isSelected && styles.itemSelected,
+                isSelected && {
+                  backgroundColor: itemSelectedBackground,
+                  borderColor: tintColor,
+                },
+                pressed && styles.itemPressed,
+              ]}
               onPress={() => setSelectedBairro(bairro)}>
               <ThemedText type={isSelected ? 'defaultSemiBold' : 'default'}>
                 {bairro}
@@ -110,12 +135,18 @@ export default function BairroScreen() {
         })}
       </ScrollView>
 
-      <ThemedText style={styles.selectedText}>
-        {selectedBairro ? 'Selecionado: ' : 'Nenhum bairro selecionado.'}
-        {selectedBairro ? (
-          <ThemedText type="defaultSemiBold">{selectedBairro}</ThemedText>
-        ) : null}
-      </ThemedText>
+      <ThemedView
+        style={[
+          styles.footerCard,
+          { backgroundColor: cardBackground, borderColor: cardBorder },
+        ]}>
+        <ThemedText style={styles.selectedText}>
+          {selectedBairro ? 'Selecionado: ' : 'Nenhum bairro selecionado.'}
+          {selectedBairro ? (
+            <ThemedText type="defaultSemiBold">{selectedBairro}</ThemedText>
+          ) : null}
+        </ThemedText>
+      </ThemedView>
     </ThemedView>
   );
 }
@@ -124,30 +155,47 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    gap: 12,
+    gap: 16,
+  },
+  headerCard: {
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
   },
   subtitle: {
-    marginBottom: 8,
+    marginTop: 6,
+    opacity: 0.75,
   },
   list: {
     flex: 1,
   },
   listContent: {
-    gap: 10,
-    paddingBottom: 8,
+    gap: 12,
+    paddingBottom: 12,
   },
   item: {
-    paddingVertical: 12,
+    paddingVertical: 14,
     paddingHorizontal: 16,
-    borderRadius: 12,
+    borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#d0d0d0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 2,
   },
   itemSelected: {
-    borderColor: '#0a7ea4',
-    backgroundColor: '#e0f1f6',
+  },
+  itemPressed: {
+    opacity: 0.85,
+  },
+  footerCard: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1,
   },
   selectedText: {
-    marginTop: 8,
+    textAlign: 'center',
   },
 });
