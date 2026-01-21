@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { Button, ScrollView, StyleSheet } from 'react-native';
+import { type Href, router } from 'expo-router';
 
 import { BairroItem } from '@/components/bairro-item';
 import { ThemedText } from '@/components/themed-text';
@@ -54,6 +55,14 @@ export default function BairroScreen() {
             <ThemedText type="defaultSemiBold">{selectedBairro}</ThemedText>
           ) : null}
         </ThemedText>
+        {selectedBairro ? (
+          <Button
+            title="Ver horários de coleta"
+            onPress={() =>
+              router.push({ pathname: '/horarios', params: { bairro: selectedBairro } } as Href)
+            }
+          />
+        ) : null}
       </ThemedView>
     </ThemedView>
   );
@@ -86,6 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 14,
     borderWidth: 1,
+    gap: 10,
   },
   selectedText: {
     textAlign: 'center',
