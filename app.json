@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "coleta-lixo",
-    "slug": "coleta-lixo",
+    "name": "guia-mobile-servicos-gratuitos-cosmopolis",
+    "slug": "guia-mobile-servicos-gratuitos-cosmopolis",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "coletalixo",
+    "scheme": "guia-mobile-servicos-gratuitos-cosmopolis",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

@@ -1,29 +1,40 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Paleta profissional para app de coleta de resíduos
+ * Tema eco-sustentável com cores modernas
  */
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// Cores principais - Verde esmeralda/Sustentabilidade
+const tintColorLight = '#059669'; // emerald-600
+const tintColorDark = '#34D399'; // emerald-400
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#0F172A',
+    textSecondary: '#64748B',
+    background: '#F8FAFC',
+    backgroundCard: '#FFFFFF',
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: '#64748B',
+    tabIconDefault: '#94A3B8',
     tabIconSelected: tintColorLight,
+    border: '#E2E8F0',
+    accent: '#10B981',
+    accentMuted: '#D1FAE5',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: '#F1F5F9',
+    textSecondary: '#94A3B8',
+    background: '#0F172A',
+    backgroundCard: '#1E293B',
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: '#94A3B8',
+    tabIconDefault: '#64748B',
     tabIconSelected: tintColorDark,
+    border: '#334155',
+    accent: '#34D399',
+    accentMuted: '#064E3B',
   },
 };
 
