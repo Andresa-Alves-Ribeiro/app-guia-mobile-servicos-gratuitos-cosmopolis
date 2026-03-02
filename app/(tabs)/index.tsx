@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import {
   Pressable,
@@ -37,6 +38,7 @@ const CATEGORY_ICONS: Record<string, IconName> = {
 const getCategoryIcon = (category: string) => CATEGORY_ICONS[category] || 'trash.fill';
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const colorScheme = useColorScheme() ?? 'light';
   const { width } = useWindowDimensions();
@@ -52,6 +54,7 @@ export default function HomeScreen() {
     (category: string) => (
       <Pressable
         key={category}
+        onPress={() => router.push(`/categoria/${encodeURIComponent(category)}`)}
         style={({ pressed }) => [
           styles.categoryCard,
           {
@@ -77,7 +80,7 @@ export default function HomeScreen() {
         </ThemedText>
       </Pressable>
     ),
-    [cardWidth, colors]
+    [cardWidth, colors, router]
   );
 
   return (
