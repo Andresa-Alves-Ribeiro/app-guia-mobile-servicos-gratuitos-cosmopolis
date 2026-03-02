@@ -86,7 +86,7 @@ export const LOCAIS_SERVICOS_GRATUITOS: LocalServicoGratuito[] = [
     telefone: '(19) 3812-3856',
   },
   {
-    nome: 'CRAS JD. Cosmopolitano',
+    nome: 'CRAS Jardim Cosmopolita',
     endereco: 'Rua Newton Amável da Silva, 173 - Jd. Cosmopolitano',
     horarios: ['08:00 - 17:00'],
     categoria: 'Assistência Social',
@@ -114,14 +114,14 @@ export const LOCAIS_SERVICOS_GRATUITOS: LocalServicoGratuito[] = [
     telefone: '(19) 3872-5566',
   },
   {
-    nome: 'Fármacia Municipal',
+    nome: 'Farmácia Municipal',
     endereco: 'Avenida da Saudade, 1121',
     horarios: ['08:00 - 17:00'],
     categoria: 'Saúde',
     telefone: '(19) 3872-3091',
   },
   {
-    nome: 'Vigilância Epidemiologica',
+    nome: 'Vigilância Epidemiológica',
     endereco: 'Rua Antônio Carlos Nogueira, 935',
     horarios: ['08:00 - 17:00'],
     categoria: 'Saúde',

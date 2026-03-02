@@ -1,13 +1,13 @@
 /**
- * Paleta profissional para app de coleta de resíduos
- * Tema eco-sustentável com cores modernas
+ * Paleta profissional para guia de serviços públicos
+ * Tema institucional com cores que transmitem confiança e acessibilidade
  */
 
 import { Platform } from 'react-native';
 
-// Cores principais - Verde esmeralda/Sustentabilidade
-const tintColorLight = '#059669'; // emerald-600
-const tintColorDark = '#34D399'; // emerald-400
+// Cores principais - Azul índigo/Serviços públicos
+const tintColorLight = '#2563EB'; // blue-600
+const tintColorDark = '#60A5FA'; // blue-400
 
 export const Colors = {
   light: {
@@ -20,8 +20,8 @@ export const Colors = {
     tabIconDefault: '#94A3B8',
     tabIconSelected: tintColorLight,
     border: '#E2E8F0',
-    accent: '#10B981',
-    accentMuted: '#D1FAE5',
+    accent: '#3B82F6',
+    accentMuted: '#DBEAFE',
   },
   dark: {
     text: '#F1F5F9',
@@ -33,8 +33,8 @@ export const Colors = {
     tabIconDefault: '#64748B',
     tabIconSelected: tintColorDark,
     border: '#334155',
-    accent: '#34D399',
-    accentMuted: '#064E3B',
+    accent: '#60A5FA',
+    accentMuted: '#1E3A8A',
   },
 };
 
