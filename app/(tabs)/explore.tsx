@@ -207,8 +207,8 @@ export default function ExploreScreen() {
                           handleLigar(lugar.telefone);
                         }}
                         style={[styles.phoneButton, { backgroundColor: colors.accentMuted }]}>
-                        <IconSymbol name="phone.fill" size={16} color={colors.tint} />
-                        <ThemedText style={[styles.phoneText, { color: colors.tint }]}>
+                        <IconSymbol name="phone.fill" size={16} color={colors.accentText} />
+                        <ThemedText style={[styles.phoneText, { color: colors.accentText }]}>
                           Ligar
                         </ThemedText>
                       </Pressable>

@@ -16,6 +16,7 @@ export const Colors = {
     background: '#F8FAFC',
     backgroundCard: '#FFFFFF',
     tint: tintColorLight,
+    accentText: '#1D4ED8', // azul mais escuro para botões (boa visibilidade)
     icon: '#64748B',
     tabIconDefault: '#94A3B8',
     tabIconSelected: tintColorLight,
@@ -29,6 +30,7 @@ export const Colors = {
     background: '#0F172A',
     backgroundCard: '#1E293B',
     tint: tintColorDark,
+    accentText: '#93C5FD', // azul mais claro para contraste em fundos escuros
     icon: '#94A3B8',
     tabIconDefault: '#64748B',
     tabIconSelected: tintColorDark,
