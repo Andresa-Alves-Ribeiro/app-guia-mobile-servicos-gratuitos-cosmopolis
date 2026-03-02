@@ -14,7 +14,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
-import { LOCAIS_SERVICOS_GRATUITOS } from '@/data/horarios-coleta';
+import { LOCAIS_SERVICOS_GRATUITOS } from '@/data/locais-servicos';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function CategoriaScreen() {
@@ -52,7 +52,6 @@ export default function CategoriaScreen() {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
-        {/* Header */}
         <View style={[styles.hero, { backgroundColor: colors.tint, paddingTop: insets.top + 16 }]}>
           <View style={styles.heroHeader}>
             <Pressable onPress={() => router.back()} hitSlop={12} style={styles.backButton}>
@@ -72,7 +71,6 @@ export default function CategoriaScreen() {
           </ThemedText>
         </View>
 
-        {/* Barra de busca */}
         <View style={[styles.searchWrapper, { backgroundColor: colors.background }]}>
           <View style={[styles.searchBar, { backgroundColor: colors.backgroundCard, borderColor: colors.border }]}>
             <IconSymbol name="magnifyingglass" size={20} color={colors.textSecondary} />
@@ -91,7 +89,6 @@ export default function CategoriaScreen() {
           </View>
         </View>
 
-        {/* Lista de lugares */}
         <View style={[styles.lugaresWrapper, { backgroundColor: colors.background }]}>
           <View style={styles.lugaresList}>
             {lugaresFiltrados.length === 0 ? (
