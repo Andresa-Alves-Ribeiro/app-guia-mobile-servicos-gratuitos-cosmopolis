@@ -9,7 +9,22 @@ import { Platform } from 'react-native';
 const tintColorLight = '#2563EB'; // blue-600
 const tintColorDark = '#60A5FA'; // blue-400
 
-export const Colors = {
+export type ThemeColors = {
+  text: string;
+  textSecondary: string;
+  background: string;
+  backgroundCard: string;
+  tint: string;
+  accentText: string;
+  icon: string;
+  tabIconDefault: string;
+  tabIconSelected: string;
+  border: string;
+  accent: string;
+  accentMuted: string;
+};
+
+export const Colors: Record<'light' | 'dark', ThemeColors> = {
   light: {
     text: '#0F172A',
     textSecondary: '#64748B',
