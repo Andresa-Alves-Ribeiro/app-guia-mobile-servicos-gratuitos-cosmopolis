@@ -1,15 +1,9 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  View,
-  useWindowDimensions,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 
+import { HeroSection } from '@/components/hero-section';
+import { SearchBar } from '@/components/search-bar';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -34,7 +28,6 @@ const CATEGORY_ICONS: Record<string, IconName> = {
   Outros: 'trash.fill',
 };
 
-// Fallback para ícones não mapeados
 const getCategoryIcon = (category: string) => CATEGORY_ICONS[category] || 'trash.fill';
 
 export default function HomeScreen() {
@@ -42,10 +35,9 @@ export default function HomeScreen() {
   const [searchText, setSearchText] = useState('');
   const colorScheme = useColorScheme() ?? 'light';
   const { width } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
   const colors = Colors[colorScheme];
 
-  const cardWidth = (width - 48) / 2 - 8; // 2 colunas com padding
+  const cardWidth = (width - 48) / 2 - 8;
   const filteredCategories = CATEGORIES.filter((cat) =>
     cat.toLowerCase().includes(searchText.toLowerCase())
   );
@@ -89,42 +81,22 @@ export default function HomeScreen() {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
-        {/* Header Hero */}
-        <View style={[styles.hero, { backgroundColor: colors.tint, paddingTop: insets.top + 16 }]}>
-          <ThemedText lightColor="#fff" darkColor="#fff" type="subtitle" style={styles.heroSubtitle}>
-            Guia de Serviços
-          </ThemedText>
-          <ThemedText lightColor="#fff" darkColor="#fff" style={styles.heroTitle}>
-            Cosmópolis
-          </ThemedText>
-          <ThemedText
-            lightColor="rgba(255,255,255,0.9)"
-            darkColor="rgba(255,255,255,0.9)"
-            style={styles.heroDesc}>
-            Encontre os serviços que você precisa
-          </ThemedText>
-        </View>
+        <HeroSection
+          topLabel="Guia de Serviços"
+          title="Cosmópolis"
+          subtitle="Encontre os serviços que você precisa"
+          colors={colors}
+          titleLarge
+        />
 
-        {/* Search Bar */}
-        <View style={[styles.searchWrapper, { backgroundColor: colors.background }]}>
-          <View style={[styles.searchBar, { backgroundColor: colors.backgroundCard, borderColor: colors.border }]}>
-            <IconSymbol name="magnifyingglass" size={20} color={colors.textSecondary} />
-            <TextInput
-              style={[styles.searchInput, { color: colors.text }]}
-              placeholder="Buscar categoria..."
-              placeholderTextColor={colors.textSecondary}
-              value={searchText}
-              onChangeText={setSearchText}
-            />
-            {searchText.length > 0 && (
-              <Pressable onPress={() => setSearchText('')} hitSlop={12}>
-                <ThemedText style={{ color: colors.textSecondary, fontSize: 14 }}>Limpar</ThemedText>
-              </Pressable>
-            )}
-          </View>
-        </View>
+        <SearchBar
+          value={searchText}
+          onChangeText={setSearchText}
+          placeholder="Buscar categoria..."
+          colors={colors}
+          variant="overlap"
+        />
 
-        {/* Section Title */}
         <View style={styles.sectionHeader}>
           <ThemedText type="title" style={styles.sectionTitle}>
             Categorias
@@ -134,10 +106,7 @@ export default function HomeScreen() {
           </ThemedText>
         </View>
 
-        {/* Category Grid */}
-        <View style={styles.categoryGrid}>
-          {filteredCategories.map(renderCategoryCard)}
-        </View>
+        <View style={styles.categoryGrid}>{filteredCategories.map(renderCategoryCard)}</View>
 
         <View style={styles.bottomSpacer} />
       </ScrollView>
@@ -154,49 +123,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 100,
-  },
-  hero: {
-    paddingBottom: 32,
-    paddingHorizontal: 24,
-    borderBottomLeftRadius: 28,
-    borderBottomRightRadius: 28,
-  },
-  heroSubtitle: {
-    fontSize: 14,
-    letterSpacing: 1.2,
-    textTransform: 'uppercase',
-    opacity: 0.9,
-    marginBottom: 4,
-  },
-  heroTitle: {
-    fontSize: 32,
-    fontWeight: '700',
-    letterSpacing: -0.5,
-    marginBottom: 4,
-  },
-  heroDesc: {
-    fontSize: 15,
-    fontWeight: '400',
-  },
-  searchWrapper: {
-    paddingHorizontal: 20,
-    marginTop: -16,
-    paddingBottom: 20,
-  },
-  searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderRadius: 16,
-    borderWidth: 1,
-    marginTop: 15,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 16,
-    padding: 0,
   },
   sectionHeader: {
     flexDirection: 'row',
