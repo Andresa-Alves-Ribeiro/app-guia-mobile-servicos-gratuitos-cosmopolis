@@ -1,50 +1,107 @@
-# Welcome to your Expo app 👋
+# Guia de Servicos de Cosmopolis
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile desenvolvido com React Native e Expo para facilitar o acesso a servicos gratuitos da cidade de Cosmopolis.
 
-## Get started
+O projeto centraliza informacoes como nome do local, endereco, telefone, horario e, em alguns casos, e-mail, permitindo que moradores encontrem rapidamente o atendimento que precisam.
 
-1. Install dependencies
+## Objetivo do projeto
 
-   ```bash
-   npm install
-   ```
+- Organizar servicos publicos e gratuitos em um unico app.
+- Melhorar a descoberta de locais por categoria, nome ou endereco.
+- Simplificar o contato com os servicos por meio de telefone.
 
-2. Start the app
+## Funcionalidades principais
 
-   ```bash
-   npx expo start
-   ```
+- **Tela inicial por categorias:** exibicao das categorias de servico com busca por nome da categoria.
+- **Tela de locais (geral):** listagem completa com busca por nome, endereco ou categoria.
+- **Ordenacao de resultados:** filtro de ordenacao para facilitar a navegacao na lista de locais.
+- **Tela de categoria:** lista dedicada para cada categoria com busca interna.
+- **Acesso rapido ao contato:** acao para ligar diretamente para o telefone do local.
+- **Tema adaptado (claro/escuro):** interface com suporte a esquema de cores.
 
-In the output, you'll find options to open the app in a
+## Tecnologias utilizadas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [Expo](https://expo.dev/) e React Native
+- [Expo Router](https://docs.expo.dev/router/introduction/) para roteamento baseado em arquivos
+- TypeScript
+- Jest + jest-expo para testes
+- ESLint (configuracao Expo) para padrao de codigo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Estrutura do projeto
 
-## Get a fresh project
+- `app/`: telas e rotas do aplicativo (tabs, categoria e layout global).
+- `components/`: componentes reutilizaveis da interface.
+- `data/`: base local de dados de categorias e locais de servicos.
+- `hooks/`: hooks customizados para busca, filtros, navegacao e tema.
+- `services/`: camada de acesso e transformacao dos dados.
+- `utils/`: funcoes utilitarias (filtros, ordenacao e telefone).
 
-When you're ready, run:
+## Como executar localmente
+
+### Pre-requisitos
+
+- Node.js instalado
+- npm instalado
+- Expo Go no celular (opcional) ou emulador Android/iOS configurado
+
+### Passos
+
+1. Instale as dependencias:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Inicie o projeto:
 
-## Learn more
+```bash
+npm run start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Execute na plataforma desejada:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- `a` no terminal para Android
+- `w` no terminal para Web
+- ou use:
+  - `npm run android`
+  - `npm run web`
+  - `npm run ios`
 
-## Join the community
+## Testes e qualidade
 
-Join our community of developers creating universal apps.
+- Rodar testes:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm run test
+```
+
+- Gerar cobertura:
+
+```bash
+npm run test:coverage
+```
+
+- Validar lint:
+
+```bash
+npm run lint
+```
+
+## Dados do aplicativo
+
+Os dados dos servicos estao atualmente em arquivo local:
+
+- `data/locais-servicos.ts`
+
+As categorias sao derivadas automaticamente desses dados em:
+
+- `data/categories.ts`
+
+Isso garante sincronizacao entre o cadastro de locais e as categorias exibidas na interface.
+
+## Possiveis evolucoes
+
+- Integracao com API para dados atualizados em tempo real.
+- Favoritos e historico de buscas.
+- Geolocalizacao e rotas ate o local.
+- Melhorias de acessibilidade e internacionalizacao.
